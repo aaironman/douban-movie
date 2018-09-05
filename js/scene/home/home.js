@@ -1,51 +1,42 @@
 import React from 'react';
 import BaseComponent from "../common/BaseComponent";
-import {View,Text,StyleSheet,Button} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, Button} from 'react-native';
 import Color from '../../assets/Color';
 import Utils from '../../utils/Utils';
-import FetchUtls from '../../utils/FetchUtil';
-import * as Urls from '../../constants/Urls';
+import ScrollableTabView, {DefaultTabBar} from 'react-native-scrollable-tab-view';
+import TopFilmList from './TopFilmList';
 
-export default class Home extends BaseComponent{
+export default class Home extends BaseComponent {
 
     static navigationOptions = ({navigation}: any) => ({
         ...Utils.generateNavTitleOptions('home'),
     });
 
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state = {
-            titleText:''
-        }
     }
 
-    _render(){
-        return (
-            <View style={styles.container}>
-                <Button onPress={this._fetch.bind(this)} title='Home'/>
-                <Text>{this.state.titleText}</Text>
-            </View>
-        )
+    _render() {
+        return<View style={styles.container}>
+                    <ScrollableTabView
+                        tabBarActiveTextColor={Color.primary}
+                        tabBarInactiveTextColor={Color.gray}
+                        tabBarUnderlineStyle={{backgroundColor: Color.primary, height: 2,}}
+                        tabBarTextStyle={{fontSize: 16}}
+                        style={{flex: 1, marginTop: 10, backgroundColor: 'white'}}
+                        renderTabBar={() => <DefaultTabBar style={{height: 30}}/>}
+                    >
+                        <TopFilmList tabLabel='Top250'/>
+                    </ScrollableTabView>
+        </View>
     }
 
-    _fetch(){
-        FetchUtls.post(Urls.Config,{},data=>{
-            this.setState({
-                titleText:'success:' + JSON.stringify(data)
-            })
-        },msg =>{
-            this.setState({
-                titleText:'error:' + JSON.stringify(msg)
-            })
-        })
-    }
 }
 
 
-
 const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: Color.backgroundColor
-        }
-    })
+    container: {
+        flex: 1,
+        backgroundColor: Color.backgroundColor,
+    }
+})

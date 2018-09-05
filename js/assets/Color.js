@@ -6,4 +6,5 @@ export default {
     background:'#F5FCFF',
     white:'#FFFFFF',
     titleBottonSolid: '#979797',
+    blackTextColor:'#333333'
 }
