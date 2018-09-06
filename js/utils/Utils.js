@@ -2,8 +2,8 @@ import {Platforms} from "./Platforms";
 import Color from '../assets/Color'
 import {navigate,goBack} from "./NavigationService";
 import {
-    StatusBar
-} from 'react-native';
+    StatusBar,
+} from 'react-native'
 
 export default class Utils{
     static generateNavTitleOptions(title) {
@@ -24,7 +24,8 @@ export default class Utils{
                     paddingTop: StatusBar.currentHeight,
                     height: StatusBar.currentHeight+44,
                     elevation: 0,
-                },
+                }
+
             }
         }
         return {

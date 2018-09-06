@@ -132,16 +132,55 @@ const Tab = createBottomTabNavigator({
     }
 });
 
-Tab.navigationOptions = ({ navigation }) => {
-    let { routeName } = navigation.state.routes[navigation.state.index];
-    if(routeName=='HomeTab'||routeName=='MusicTab'||routeName=='BookTab' || routeName==='MyTab'){
-        return {
-            header:null,
-        };
+HomeStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true
+    if (navigation.state.index > 0) {
+        tabBarVisible = false
+    }
+    return {
+        tabBarVisible,
+    }
+}
+
+MusicStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true
+    if (navigation.state.index > 0) {
+        tabBarVisible = false
+    }
+    return {
+        tabBarVisible,
+    }
+}
+
+BookStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true
+    if (navigation.state.index > 0) {
+        tabBarVisible = false
+    }
+    return {
+        tabBarVisible,
+    }
+}
+
+MyStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true
+    if (navigation.state.index > 0) {
+        tabBarVisible = false
+    }
+    return {
+        tabBarVisible,
     }
 }
 
 
+Tab.navigationOptions = ({ navigation }) => {
+    let { routeName } = navigation.state.routes[navigation.state.index];
+    if(routeName=='HomeTab'||routeName=='MusicTab'||routeName=='BookTab' || routeName==='MyTab'){
+        return {
+            header:null
+        }
+    }
+}
 
 const RootNav = createStackNavigator({
     tabStack:Tab,

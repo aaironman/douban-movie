@@ -4,4 +4,4 @@ import { YellowBox } from 'react-native';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-AppRegistry.registerComponent('reactNative', () => App);
+AppRegistry.registerComponent('douban', () => App);

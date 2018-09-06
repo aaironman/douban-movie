@@ -77,14 +77,14 @@ export default class TopFilmList extends Component {
                 renderIf(!this.state.loading)(
                     <FlatList style={styles.listContainer}
                               numColumns ={3}
-                              renderItem = {this._renderItem.bind(this)}
+                              renderItem = {this._renderItem}
                               data={this.state.data}
                               keyExtractor={(item, index) => index}
                               refreshing={this.state.isRefresh}
-                              onRefresh={this._onRefresh.bind(this)}
-                              onEndReachedThreshold={0.3}
-                              onEndReached={this._loadMore.bind(this)}
-                              ListFooterComponent={this._renderFooter.bind(this)}
+                              onRefresh={()=>this._onRefresh()}
+                              onEndReachedThreshold={0.1}
+                              onEndReached={()=>this._loadMore()}
+                              ListFooterComponent={this._renderFooter}
                               extraData={[this.state.isLoadMore, this.state.totalPage, this.state.currentPage]}
                     />
                 )
@@ -105,9 +105,9 @@ export default class TopFilmList extends Component {
         return <FilmItem item={item.item}/>
     }
 
-    _renderFooter(){
+    _renderFooter = ()=>{
         console.log('------renderFooter-------')
-        let status = 'null'
+        let status = 'loading'
         if (this.state.currentPage > this.state.totalPage&& this.state.totalPage>=1){
             status = 'complete'
         }else {
@@ -115,7 +115,6 @@ export default class TopFilmList extends Component {
                 status = 'loading'
             }
         }
-
         return <ListFooter status={status}/>
     }
 
@@ -135,7 +134,7 @@ export default class TopFilmList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex:1,
         backgroundColor: Color.background,
     },
     listContainer:{
