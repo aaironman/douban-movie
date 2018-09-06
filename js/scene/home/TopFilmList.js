@@ -18,6 +18,7 @@ export default class TopFilmList extends Component {
             loading:true,
             isRefresh:false,
             isLoadMore:false,
+            dataLoaded:false,
             currentPage:1,
             totalPage:0,
             data:{
@@ -46,6 +47,7 @@ export default class TopFilmList extends Component {
                     data:tempData,
                     isRefresh:false,
                     isLoadMore:false,
+                    dataLoaded:true,
                     totalPage:Math.ceil(data.total/Constants.PAGE_15)
                 })
             } else {
@@ -54,6 +56,7 @@ export default class TopFilmList extends Component {
                     data:data.subjects,
                     isRefresh:false,
                     isLoadMore:false,
+                    dataLoaded:true,
                     totalPage:Math.ceil(data.total/Constants.PAGE_15)
                 })
             }
@@ -61,7 +64,8 @@ export default class TopFilmList extends Component {
             this.setState({
                 loading:false,
                 isRefresh:false,
-                isLoadMore:false
+                isLoadMore:false,
+                dataLoaded:true,
             })
         })
     }
@@ -70,12 +74,13 @@ export default class TopFilmList extends Component {
         return (<View style={styles.container}>
             {
                 renderIf(this.state.loading)(
-                    <ActivityIndicator size="large" color={Color.gray}/>
+                    <ActivityIndicator size="large" color={Color.gray} style={{position:'absolute',width:'100%',height:'100%'}}/>
                 )
             }
             {
                 renderIf(!this.state.loading)(
                     <FlatList style={styles.listContainer}
+                              scrollEnabled={this.state.dataLoaded}
                               numColumns ={3}
                               renderItem = {this._renderItem}
                               data={this.state.data}
@@ -90,14 +95,13 @@ export default class TopFilmList extends Component {
                 )
             }
         </View>)
-
     }
 
     _onRefresh(){
         this.setState({
-            isRefresh:true,
-            currentPage:1
+            isRefresh:true
         })
+        this.state.currentPage = 1
         this._fetchData()
     }
 

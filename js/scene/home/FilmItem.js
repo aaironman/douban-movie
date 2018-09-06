@@ -23,7 +23,7 @@ export class FilmItem extends Component{
                 this.props.navigation.navigate('Details')
             }}>
                 <PLImage style={{width:'100%',
-                    height:70}} uri={this.props.item.images['small']}/>
+                    height:90}} uri={this.props.item.images['small']}/>
                 <Text style={styles.title} numberOfLines={1}>{this.props.item.title}</Text>
             </TouchableOpacity>
         )
