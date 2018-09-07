@@ -60,6 +60,7 @@ export default class HotFilmList extends Component {
                     totalPage:Math.ceil(data.total/Constants.PAGE_15)
                 })
             }
+            console.log('totalPage:' + this.state.totalPage)
         },err=>{
             this.setState({
                 loading:false,
@@ -125,10 +126,11 @@ export default class HotFilmList extends Component {
         if (this.state.isRefresh || this.state.isLoadMore) {
             return
         }
-        this.state.currentPage++
+
         if (this.state.currentPage > this.state.totalPage){
             return
         }
+        this.state.currentPage++
         this.state.isLoadMore = true
         this._fetchData()
     }

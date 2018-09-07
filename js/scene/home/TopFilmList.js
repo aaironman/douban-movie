@@ -125,10 +125,11 @@ export default class TopFilmList extends Component {
         if (this.state.isRefresh || this.state.isLoadMore) {
             return
         }
-        this.state.currentPage++
+
         if (this.state.currentPage > this.state.totalPage){
             return
         }
+        this.state.currentPage++
         this.state.isLoadMore = true
         this._fetchData()
     }
