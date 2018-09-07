@@ -10,7 +10,7 @@ import ListFooter from "../common/ListFooter";
 
 
 
-export default class TopFilmList extends Component {
+export default class HotFilmList extends Component {
 
     constructor(props) {
         super(props)
@@ -37,7 +37,7 @@ export default class TopFilmList extends Component {
             start:(this.state.currentPage-1)*Constants.PAGE_15,
             count:Constants.PAGE_15
         }
-        FetchUtil.post(Url.TOP_FILM_LIST,param,data=>{
+        FetchUtil.post(Url.HOST_FILM_LIST,param,data=>{
             console.log('_fetchData--this.state.currentPage:' + this.state.currentPage)
             if (this.state.currentPage > 1){//加载更多
                 let tempData = this.state.data

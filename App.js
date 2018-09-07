@@ -132,7 +132,7 @@ const Tab = createBottomTabNavigator({
     }
 });
 
-HomeStack.navigationOptions = ({ navigation }) => {
+HomeStack.navigationOptions = ({ navigation }) => {//隐藏二级界面tabbar
     let tabBarVisible = true
     if (navigation.state.index > 0) {
         tabBarVisible = false

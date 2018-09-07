@@ -5,6 +5,7 @@ import Color from '../../assets/Color';
 import Utils from '../../utils/Utils';
 import ScrollableTabView, {DefaultTabBar} from 'react-native-scrollable-tab-view';
 import TopFilmList from './TopFilmList';
+import HotFilmList from "./HotFilmList";
 
 export default class Home extends BaseComponent {
 
@@ -17,7 +18,7 @@ export default class Home extends BaseComponent {
     }
 
     _render() {
-        return<View style={styles.container}>
+        return <View style={styles.container}>
                     <ScrollableTabView
                         tabBarActiveTextColor={Color.primary}
                         tabBarInactiveTextColor={Color.gray}
@@ -27,6 +28,7 @@ export default class Home extends BaseComponent {
                         renderTabBar={() => <DefaultTabBar style={{height: 30}}/>}
                     >
                         <TopFilmList tabLabel='Top250'/>
+                        <HotFilmList tabLabel='正在热映'/>
                     </ScrollableTabView>
         </View>
     }

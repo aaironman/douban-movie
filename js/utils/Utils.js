@@ -5,6 +5,8 @@ import {
     StatusBar,
 } from 'react-native'
 
+const TITLE_OFFSET = Platforms.onIos === 'ios' ? 70 : 56;
+
 export default class Utils{
     static generateNavTitleOptions(title) {
         if (Platforms.onAndroid) {
@@ -15,15 +17,19 @@ export default class Utils{
                 headerTitleStyle: {
                     fontSize: 17,
                     fontWeight: undefined,
-                    textAlign: 'center',
                     alignSelf:'center',
                     flex:1,
+                    textAlign: 'center',
                 },
                 headerStyle: {
                     backgroundColor: Color.primary,
                     paddingTop: StatusBar.currentHeight,
                     height: StatusBar.currentHeight+44,
                     elevation: 0,
+                },
+                headerTitleContainerStyle:{//解决安卓标题不居中
+                    left: TITLE_OFFSET,
+                    right: TITLE_OFFSET,
                 }
 
             }

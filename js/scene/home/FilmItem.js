@@ -5,6 +5,7 @@ import PLImage from '../common/PLImage'
 import {Toast} from 'antd-mobile-rn'
 import Details from "./Details";
 import {withNavigation} from "react-navigation";
+import PropTypes from 'prop-types'
 
 
 
@@ -15,10 +16,17 @@ export class FilmItem extends Component{
 
     }
 
+    static defaultProps={
+        style : {}
+    }
+
+    static propTypes = {
+        style:PropTypes.object
+    }
 
     render(){
         return (
-            <TouchableOpacity style={styles.container} onPress={()=>{
+            <TouchableOpacity style={[styles.container,this.props.style]} onPress={()=>{
                 Toast.info(this.props.item.title,3)
                 this.props.navigation.navigate('Details')
             }}>
@@ -29,14 +37,15 @@ export class FilmItem extends Component{
         )
     }
 }
+
 const styles = StyleSheet.create({
     container:{
-        flex:1,
+        // flex:1,
         backgroundColor:Color.white,
         alignItems:'center',
         justifyContent:'center',
         borderColor:Color.gray,
-        borderLeftWidth:1,
+        borderRightWidth:1,
         borderBottomWidth:1
 
 
@@ -44,6 +53,7 @@ const styles = StyleSheet.create({
     title:{
         fontSize:14,
         marginTop:5,
+        marginBottom:5
     },
 })
 
