@@ -27,8 +27,7 @@ export class FilmItem extends Component{
     render(){
         return (
             <TouchableOpacity style={[styles.container,this.props.style]} onPress={()=>{
-                Toast.info(this.props.item.title,3)
-                this.props.navigation.navigate('Details')
+                this.props.navigation.navigate('Details',{id:this.props.item.id})
             }}>
                 <PLImage style={{width:'100%',
                     height:90}} uri={this.props.item.images['small']}/>

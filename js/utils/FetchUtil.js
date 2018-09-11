@@ -89,7 +89,7 @@ export default class FetchUtil {
 
         let request = null;
         if (method === 'POST') {//post请求
-            console.log('POST-params:',JSON.stringify(params))
+            console.log('POST-url:%s---params:%s',url, JSON.stringify(params))
              request = new Request(url, {
                 method: 'POST',
                 headers: header,
@@ -97,7 +97,7 @@ export default class FetchUtil {
             });
 
         }else if (method === 'GET'){//get请求
-            console.log('GET-params:',handleUrl(url)(params))
+            console.log('GET-url:%s',handleUrl(url)(params))
             request = new Request(handleUrl(url)(params), {
                 method: 'GET',
                 headers: header,

@@ -16,7 +16,8 @@
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.12.0",
-    "render-if": "^0.1.1"
+    "render-if": "^0.1.1",
+    "teaset": "^0.5.9"
   },
   "devDependencies": {
     "babel-jest": "23.0.0",
